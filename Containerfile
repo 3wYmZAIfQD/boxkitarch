@@ -35,6 +35,5 @@ RUN git clone https://aur.archlinux.org/yay.git \
     && rm -rf .cache yay
 # Clean up cache
 
-RUN yay -S kitty
 
     
