@@ -10,7 +10,7 @@ LABEL com.github.containers.toolbox="true" \
 COPY extra-packages /
 RUN pacman -Syu --needed --noconfirm - < extra-packages
 RUN rm /extra-packages
-
+RUN pacman -Scc --noconfirm
 
 ARG user=makepkg
 RUN useradd --system --create-home $user \
@@ -26,7 +26,6 @@ RUN git clone https://aur.archlinux.org/yay.git \
     && rm -rf .cache yay
 # Clean up cache
 
-RUN pacman -Scc --noconfirm
 
 
 #RUN   ln -fs /bin/sh /usr/bin/sh && \
