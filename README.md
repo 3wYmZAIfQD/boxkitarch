@@ -1,4 +1,4 @@
-# boxkit
+# boxkitarch
 
 A base image and action for Toolbx and Distrobox.
 
