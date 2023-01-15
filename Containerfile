@@ -10,6 +10,7 @@ LABEL com.github.containers.toolbox="true" \
 COPY extra-packages /
 RUN pacman -Syu --needed --noconfirm - < extra-packages
 RUN rm /extra-packages
+RUN pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 # Clean up cache
 RUN pacman -Scc --noconfirm
