@@ -1,15 +1,19 @@
-FROM quay.io/toolbx-images/alpine-toolbox:3.17
+FROM docker.io/library/archlinux:base-devel
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
       summary="A cloud-native terminal experience" \
       maintainer="jorge.castro@gmail.com>"
 
+
+# Install extra packages
 COPY extra-packages /
-RUN apk update && \
-    apk upgrade && \
-    cat /extra-packages | xargs apk add
+RUN pacman -Syu --needed --noconfirm - < extra-packages
 RUN rm /extra-packages
+
+# Clean up cache
+RUN pacman -Scc --noconfirm
+
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
