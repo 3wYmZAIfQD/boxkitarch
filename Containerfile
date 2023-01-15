@@ -35,7 +35,6 @@ RUN git clone https://aur.archlinux.org/yay.git \
     && rm -rf .cache yay
 # Clean up cache
 
-COPY aur-packages /  
-RUN yay -S - < aur-packages
-RUN rm /aur-packages
+RUN yay -S kitty
+
     
